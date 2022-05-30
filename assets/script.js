@@ -137,7 +137,7 @@ const imprimirTarefaPorId = async () => {
 async function cadastrarNovaTarefa() {
   const atividade = document.getElementById("novaTarefa").value;
 
-  const tarefa = await requisicoes.criarTarefa(atividade); // await dando erro na parte visual
+  const tarefa = requisicoes.criarTarefa(atividade); // await dando erro na parte visual
 
   document.getElementById("lista-tarefas").insertAdjacentHTML(
     "beforeend",
