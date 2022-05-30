@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/fe5206eafd.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>To do List</title>
+  </head>
+  <body>
+    <header>
+      <div id="header-titulo">
+        <h1>To do List</h1>
+      </div>
+      <nav class="nav-header">
+        <div class="nav-header-pesquisa">
+          <input
+            id="pesquisar-nome"
+            type="search"
+            placeholder="Pesquisar por nome"
+          />
+          <button onclick="abrirModalPesquisa()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="conteudo">
+        <div class="conteudo-header">
+          <input
+            type="text"
+            name="novaTarefa"
+            id="novaTarefa"
+            placeholder="Adicione uma nova tarefa"
+          />
+          <button id="adcTarefa" onclick="cadastrarNovaTarefa()">
+            Adicionar
+          </button>
+        </div>
+
+        <div class="Lista-tarefas" id="lista-tarefas"></div>
+        <!-- Modal pesquisa por ID -->
+        <section class="modal-overlay">
+          <div class="modal-default">
+            <div class="modal-header">
+              <h2>Tarefas Encontradas</h2>
+              <a onclick="fecharModal()" class="close-modal">x</a>
+            </div>
+            <div class="modal-body">
+              <div id="atividade-escolhida" class="atividade-escolhida"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Modal Delete -->
+        <section class="modal-overlay-delete">
+          <div class="modal-delete">
+            <div class="modal-header-delete">
+              <h2>Apagar tarefa</h2>
+              <a onclick="fecharModalDelete()" class="close-modal">x</a>
+            </div>
+            <div class="modal-body-delete">
+              <div class="aviso-body">
+                <p>Deseja apagar a tarefa?</p>
+              </div>
+              <div class="btns-apagar">
+                <button onclick="(fecharModalDelete())" id="btn-apagar-no">
+                  Não
+                </button>
+                <button id="btn-apagar-yes">Sim</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Modal Update -->
+        <section class="modal-overlay-edit">
+          <div class="modal-edit">
+            <div class="modal-header-edit">
+              <h2>Editar tarefa</h2>
+              <a onclick="fecharModalEdit()" class="close-modal">X</a>
+            </div>
+            <div class="modal-body-edit">
+              <div class="conteudo-header">
+                <input
+                  type="text"
+                  name="novaTarefa"
+                  id="atualizarTarefa"
+                  placeholder="Atualizar tarefa"
+                />
+                <button id="btn-atualizar-tarefa">
+                  Atualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <script src="./assets/script.js"></script>
+    </main>
+  </body>
+</html>
