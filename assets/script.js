@@ -56,7 +56,7 @@ class Requisicoes {
       mode: "cors",
     });
 
-    if (response.status == 204) {
+    if (response.status == 200) {
       return true;
     } else {
       return false;
@@ -199,11 +199,11 @@ function abrirModalDelete(id) {
 
     if (exclusao) {
       fecharModalDelete();
-      alert("Tarefa Excluida com sucesso");
+      mostrarNotificacao("sucesso", "Tarefa excluída com sucesso")
       imprimirTodasTarefas();
     } else {
       fecharModalDelete();
-      alert("Tarefa Excluida com sucesso");
+      mostrarNotificacao("error", "Tarefa não encontrada")
       imprimirTodasTarefas();
     }
   });
@@ -238,3 +238,33 @@ function fecharModalEdit() {
 
 //chamando a função que imprime as tarefas na tela
 imprimirTodasTarefas();
+
+//Notificação
+
+function mostrarNotificacao(tipo, frase){
+
+  const notificacaoSpan = document.getElementById("notificacao-span");
+  const notificacaoP = document.getElementById("notificacaoP");
+
+  if(tipo === "sucesso"){
+    notificacaoSpan.innerText = "V"
+    notificacaoSpan.classList.add("notificacao-span-sucesso")
+  }else if (tipo === "error"){
+    notificacaoSpan.innerText = "X"
+    notificacaoSpan.classList.add("notificacao-span-fracasso")
+  }
+
+
+  notificacaoP.innerText = frase;
+
+
+  document.getElementById("notificacao").style.display = "flex"
+
+  setTimeout(()=>{
+    esconderNotificacao();
+  }, 3000)
+}
+
+function esconderNotificacao(){
+  document.getElementById("notificacao").style.display = "none"
+}

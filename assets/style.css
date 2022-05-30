@@ -395,3 +395,38 @@ main {
 #attTarefa{
   margin-left:10px;
 }
+
+/* Notificação */
+
+.notificacao{
+  display: none;
+  width: 10vw;
+  max-width: 30vw;
+  height: 10vh;
+  border: 1px solid #0000003d;
+  justify-content: space-evenly;
+  background-color: #ffffff;  
+  border-radius: 10px;
+  align-items: center;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translate(50%);
+  padding: 10px;
+
+}
+.notificacao span{
+  margin-right: 5px; 
+  font-weight: 400;
+}
+.notificacao p{
+  
+}
+
+.notificacao-span-sucesso{
+  color: green;
+  
+}
+.notificacao-span-fracasso{
+    color: red;
+}
