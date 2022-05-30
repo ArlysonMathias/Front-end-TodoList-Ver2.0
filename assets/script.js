@@ -18,17 +18,19 @@ class Requisicoes {
 
   async criarTarefa(atividade) {
     const tarefa = { atividade };
+    console.log(tarefa)
 
-    const response = fetch(`${baseUrl}/criar-tarefa`, {
+    const response = await fetch(`${baseUrl}/criar-tarefa`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       mode: "cors",
       body: JSON.stringify(tarefa),
-    });
-
+    });    
     const novaTarefa = await response.json();
+    
+    
 
     return novaTarefa;
   }
@@ -74,7 +76,9 @@ const requisicoes = new Requisicoes();
 const imprimirTodasTarefas = async () => {
   const tarefas = await requisicoes.buscarTodasTarefas();
 
+
   document.getElementById("lista-tarefas").innerHTML = "";
+
 
   tarefas.forEach((element) => {
     document.getElementById("lista-tarefas").insertAdjacentHTML(
@@ -85,12 +89,12 @@ const imprimirTodasTarefas = async () => {
             <li>               
                 <span class="textoTarefa">${element.atividade}</span>
                 <div>
-                <button onclick="abrirModalEdit('${element._id}')" class="btnEditar">
-                     <i class="fa-solid fa-pencil"></i>
-                </button>
-                <button onclick="abrirModalDelete('${element._id}')" class="btnApagar">
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
+                  <button onclick="abrirModalEdit('${element._id}')" class="btnEditar">
+                      <i class="fa-solid fa-pencil"></i>
+                  </button>
+                  <button onclick="abrirModalDelete('${element._id}')" class="btnApagar">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
                 </div>
             </li>
       </ul>
@@ -137,7 +141,7 @@ const imprimirTarefaPorId = async () => {
 async function cadastrarNovaTarefa() {
   const atividade = document.getElementById("novaTarefa").value;
 
-  const tarefa = requisicoes.criarTarefa(atividade); // await dando erro na parte visual
+  const tarefa = await requisicoes.criarTarefa(atividade); // await dando erro na parte visual
 
   document.getElementById("lista-tarefas").insertAdjacentHTML(
     "beforeend",
